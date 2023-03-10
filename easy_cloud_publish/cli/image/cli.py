@@ -1,5 +1,4 @@
-"""CLI application entrypoint."""
-
+"""Image group cli application."""
 
 import sys
 from typing import Any
@@ -12,28 +11,28 @@ from easy_cloud_publish.logging import logger
 
 
 @click.group()
-def root_cli() -> None:
-    """CLI Root."""
+def image() -> None:
+    """Image CLI."""
 
 
-@root_cli.command()
+@image.command()
 @click.option(
     "-wdir",
     "workdir",
-    help="Specify project wdir location when running build command",
+    help="Specify project cwd location when running build command",
 )
 @click.option(
     "-f",
     "dockerfile_path",
     help="Path from working directory to Dockfile. Including Dockerfile name",
 )
-def build_image(
+def build(
     workdir: str,
     dockerfile_path: str,
 ) -> None:
     """Build image."""
     command = BuildImageCommand(
-        dockerfile_path=dockerfile_path,
+        path_to_dockerfile=dockerfile_path,
         wdir=workdir,
     )
     validated_or_err = command.validate()
@@ -42,6 +41,11 @@ def build_image(
         logger.error(validate_err)
         sys.exit(1)
 
-    command.execute(
-        write_ops_registry=UseCaseRegistry[Any](max_length=10),
+    success_or_err = command.execute(
+        write_ops_registry=UseCaseRegistry[Any](max_length=0),
     )
+
+    err = success_or_err.err()
+    if err is not None:
+        logger.error(err)
+        sys.exit(1)

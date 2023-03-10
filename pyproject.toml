@@ -3,7 +3,7 @@ requires = ["hatchling"]
 build-backend = "hatchling.build"
 
 [project]
-name = "easy_cloud_publish"
+name = "easy-cloud-publish"
 description = "Github Action to deploy an application to Easy Cloud"
 readme = "README.md"
 requires-python = ">=3.10"
@@ -48,7 +48,7 @@ Issues = "https://github.com/mvp-projects/easy-cloud-publish/issues"
 Source = "https://github.com/mvp-projects/easy-cloud-publish"
 
 [project.scripts]
-easy-cloud-publish = "easy_cloud_publish.cli:root_cli"
+easy-cloud-publish = "easy_cloud_publish.cli:cli"
 
 [tool.hatch.version]
 path = "easy_cloud_publish/__about__.py"
