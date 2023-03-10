@@ -1,0 +1,7 @@
+sample_cli_project:
+  target: dev
+
+  outputs:
+    dev:
+      type: duckdb
+      path: dbt.duckdb

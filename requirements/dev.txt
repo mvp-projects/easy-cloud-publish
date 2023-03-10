@@ -4,10 +4,18 @@
 #
 #    pip-compile --extra=dev --no-emit-trusted-host --output-file=requirements/dev.txt --resolver=backtracking pyproject.toml
 #
+agate==1.7.0
+    # via dbt-core
 anyio==3.6.2
     # via httpcore
 attrs==22.2.0
-    # via pytest
+    # via
+    #   jsonschema
+    #   pytest
+babel==2.12.1
+    # via agate
+betterproto==1.2.5
+    # via dbt-core
 black==23.1.0
     # via publish (pyproject.toml)
 build==0.10.0
@@ -17,44 +25,70 @@ certifi==2022.12.7
     #   httpcore
     #   httpx
     #   requests
+cffi==1.15.1
+    # via dbt-core
 charset-normalizer==3.1.0
     # via requests
 click==8.1.3
     # via
     #   black
+    #   dbt-core
     #   hatch
     #   mkdocs
     #   pip-tools
     #   userpath
 colorama==0.4.6
-    # via mkdocs-material
+    # via
+    #   dbt-core
+    #   mkdocs-material
 coverage[toml]==7.2.1
     # via pytest-cov
+dbt-core==1.4.4
+    # via dbt-duckdb
+dbt-duckdb==1.4.0
+    # via publish (pyproject.toml)
+dbt-extractor==0.4.1
+    # via dbt-core
 distlib==0.3.6
     # via virtualenv
+duckdb==0.7.1
+    # via dbt-duckdb
 editables==0.3
     # via hatchling
 exceptiongroup==1.1.0
     # via pytest
 filelock==3.9.0
     # via virtualenv
+future==0.18.3
+    # via parsedatetime
 ghp-import==2.1.0
     # via mkdocs
+grpclib==0.4.3
+    # via betterproto
 h11==0.14.0
     # via httpcore
+h2==4.1.0
+    # via grpclib
 hatch==1.6.3
     # via publish (pyproject.toml)
 hatchling==1.13.0
     # via hatch
+hologram==0.0.15
+    # via dbt-core
+hpack==4.0.0
+    # via h2
 httpcore==0.16.3
     # via httpx
 httpx==0.23.3
     # via hatch
+hyperframe==6.0.1
+    # via h2
 hyperlink==21.0.0
     # via hatch
 idna==3.4
     # via
     #   anyio
+    #   dbt-core
     #   hyperlink
     #   requests
     #   rfc3986
@@ -62,14 +96,25 @@ importlib-metadata==6.0.0
     # via keyring
 iniconfig==2.0.0
     # via pytest
+isodate==0.6.1
+    # via
+    #   agate
+    #   dbt-core
 jaraco-classes==3.2.3
     # via keyring
 jinja2==3.1.2
     # via
+    #   dbt-core
     #   mkdocs
     #   mkdocs-material
+jsonschema==3.2.0
+    # via hologram
 keyring==23.13.1
     # via hatch
+leather==0.3.4
+    # via agate
+logbook==1.5.3
+    # via dbt-core
 loguru==0.6.0
     # via publish (pyproject.toml)
 markdown==3.3.7
@@ -80,11 +125,17 @@ markdown==3.3.7
 markdown-it-py==2.2.0
     # via rich
 markupsafe==2.1.2
-    # via jinja2
+    # via
+    #   jinja2
+    #   werkzeug
+mashumaro[msgpack]==3.3.1
+    # via dbt-core
 mdurl==0.1.2
     # via markdown-it-py
 mergedeep==1.3.4
     # via mkdocs
+minimal-snowplow-tracker==0.0.2
+    # via dbt-core
 mkdocs==1.4.2
     # via mkdocs-material
 mkdocs-material==9.1.2
@@ -93,25 +144,35 @@ mkdocs-material-extensions==1.1.1
     # via mkdocs-material
 more-itertools==9.1.0
     # via jaraco-classes
+msgpack==1.0.5
+    # via mashumaro
+multidict==6.0.4
+    # via grpclib
 mypy==1.1.1
     # via publish (pyproject.toml)
 mypy-extensions==1.0.0
     # via
     #   black
     #   mypy
+networkx==2.8.8
+    # via dbt-core
 orjson==3.8.7
     # via publish (pyproject.toml)
 packaging==23.0
     # via
     #   black
     #   build
+    #   dbt-core
     #   hatch
     #   hatchling
     #   mkdocs
     #   pytest
-pathspec==0.11.0
+parsedatetime==2.4
+    # via agate
+pathspec==0.10.3
     # via
     #   black
+    #   dbt-core
     #   hatchling
 pexpect==4.8.0
     # via hatch
@@ -128,6 +189,8 @@ pluggy==1.0.0
     #   pytest
 ptyprocess==0.7.0
     # via pexpect
+pycparser==2.21
+    # via cffi
 pygments==2.14.0
     # via
     #   mkdocs-material
@@ -138,6 +201,8 @@ pyperclip==1.8.2
     # via hatch
 pyproject-hooks==1.0.0
     # via build
+pyrsistent==0.19.3
+    # via jsonschema
 pytest==7.2.2
     # via
     #   publish (pyproject.toml)
@@ -145,11 +210,20 @@ pytest==7.2.2
 pytest-cov==4.0.0
     # via publish (pyproject.toml)
 python-dateutil==2.8.2
-    # via ghp-import
+    # via
+    #   ghp-import
+    #   hologram
 python-dotenv==1.0.0
     # via publish (pyproject.toml)
+python-slugify==8.0.1
+    # via agate
+pytimeparse==1.1.8
+    # via agate
+pytz==2022.7.1
+    # via dbt-core
 pyyaml==6.0
     # via
+    #   dbt-core
     #   mkdocs
     #   pymdown-extensions
     #   pyyaml-env-tag
@@ -158,7 +232,10 @@ pyyaml-env-tag==0.1
 regex==2022.10.31
     # via mkdocs-material
 requests==2.28.2
-    # via mkdocs-material
+    # via
+    #   dbt-core
+    #   minimal-snowplow-tracker
+    #   mkdocs-material
 result==0.9.0
     # via use-case-registry
 rfc3986[idna2008]==1.5.0
@@ -170,12 +247,23 @@ ruff==0.0.254
 shellingham==1.5.0.post1
     # via hatch
 six==1.16.0
-    # via python-dateutil
+    # via
+    #   isodate
+    #   jsonschema
+    #   leather
+    #   minimal-snowplow-tracker
+    #   python-dateutil
 sniffio==1.3.0
     # via
     #   anyio
     #   httpcore
     #   httpx
+sqlparse==0.4.3
+    # via dbt-core
+stringcase==1.2.0
+    # via betterproto
+text-unidecode==1.3
+    # via python-slugify
 tomli==2.0.1
     # via
     #   black
@@ -190,7 +278,10 @@ tomli-w==1.0.0
 tomlkit==0.11.6
     # via hatch
 typing-extensions==4.5.0
-    # via mypy
+    # via
+    #   dbt-core
+    #   mashumaro
+    #   mypy
 urllib3==1.26.14
     # via requests
 use-case-registry==1.1.2
@@ -201,6 +292,8 @@ virtualenv==20.20.0
     # via hatch
 watchdog==2.3.1
     # via mkdocs
+werkzeug==2.2.3
+    # via dbt-core
 wheel==0.38.4
     # via pip-tools
 zipp==3.15.0

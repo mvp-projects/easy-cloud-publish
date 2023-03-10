@@ -24,7 +24,8 @@ classifiers = [
 dependencies = [
   "orjson",
   "use-case-registry",
-  "loguru"
+  "loguru",
+  "dbt-duckdb"
 ]
 dynamic = ["version"]
 
