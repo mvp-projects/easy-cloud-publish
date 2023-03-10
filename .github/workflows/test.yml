@@ -16,21 +16,24 @@ env:
 
 jobs:
   run:
-    name: Python ${{ matrix.python-version }} on ${{ startsWith(matrix.os, 'macos-') && 'macOS' || startsWith(matrix.os, 'windows-') && 'Windows' || 'Linux' }}
+    name: Test on ${{ startsWith(matrix.os, 'macos-') && 'macOS' || startsWith(matrix.os, 'windows-') && 'Windows' || 'Linux' }}
     runs-on: ${{ matrix.os }}
     strategy:
       fail-fast: false
       matrix:
         os: [ubuntu-latest] # [ubuntu-latest, windows-latest, macos-latest]
-        python-version: ["3.10", "3.11"]
 
     steps:
       - uses: actions/checkout@v3
-      
-      - name: Set up Python ${{ matrix.python-version }}
+
+      - name: Read `.tool-versions`
+        uses: marocchino/tool-versions-action@v1.1.1
+        id: versions
+
+      - name: Set up Python ${{ steps.versions.outputs.python }}
         uses: actions/setup-python@v4
         with:
-          python-version: ${{ matrix.python-version }}
+          python-version: ${{ steps.versions.outputs.python }}
           cache: "pip"
           cache-dependency-path: "./requirements/dev.txt"
       - run: make install env=dev
@@ -38,18 +41,18 @@ jobs:
       - name: Run code
         run: make test
         env:
-          COVERAGE_FILE: ".coverage.${{ matrix.python-version }}"
+          COVERAGE_FILE: ".coverage.${{ steps.versions.outputs.python }}"
 
       - name: Store coverage file
         uses: actions/upload-artifact@v3
         with:
           name: coverage
-          path: .coverage.${{ matrix.python-version }}
+          path: .coverage.${{ steps.versions.outputs.python }}
 
   coverage:
     name: "Merging coverage reports"
     needs:
-    - run
+      - run
     runs-on: ubuntu-latest
     permissions:
       pull-requests: write
@@ -61,7 +64,7 @@ jobs:
       - uses: actions/download-artifact@v3
         id: download
         with:
-          name: 'coverage'
+          name: "coverage"
 
       - name: Coverage comment
         id: coverage_comment
@@ -76,4 +79,3 @@ jobs:
         with:
           name: python-coverage-comment-action
           path: python-coverage-comment-action.txt
-

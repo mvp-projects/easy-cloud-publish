@@ -1,7 +1,7 @@
 .DEFAULT_GOAL := help
 SHELL:=/usr/bin/env bash
 OS = $(shell uname | tr A-Z a-z)
-sources = publish tests scripts
+sources = easy_cloud_publish tests scripts
 
 .PHONY: install
 install: ## Install dev dependencies (MAKE SURE YOU ARE WITHIN A VENV).

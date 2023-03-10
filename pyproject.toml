@@ -3,8 +3,8 @@ requires = ["hatchling"]
 build-backend = "hatchling.build"
 
 [project]
-name = "publish"
-description = "Github Actions to publish a project t to Easy Cloud"
+name = "easy_cloud_publish"
+description = "Github Action to deploy an application to Easy Cloud"
 readme = "README.md"
 requires-python = ">=3.10"
 license = "MIT"
@@ -16,7 +16,6 @@ classifiers = [
   "Development Status :: 4 - Beta",
   "Programming Language :: Python",
   "Programming Language :: Python :: 3.10",
-  "Programming Language :: Python :: 3.11",
   "Programming Language :: Python :: Implementation :: CPython",
   "Programming Language :: Python :: Implementation :: PyPy",
 ]
@@ -39,8 +38,7 @@ dev = [
   "pip-tools",
   "hatch",
   "mypy",
-  "mkdocs-material",
-  "python-dotenv"
+  "mkdocs-material"
 ]
 
 [project.urls]
@@ -49,14 +47,14 @@ Issues = "https://github.com/mvp-projects/easy-cloud-publish/issues"
 Source = "https://github.com/mvp-projects/easy-cloud-publish"
 
 [tool.hatch.version]
-path = "publish/__about__.py"
+path = "easy_cloud_publish/__about__.py"
 
 [tool.coverage.run]
 branch = true
 parallel = true
 omit = [
-  "publish/__about__.py",
-  "publish/logging.py"
+  "easy_cloud_publish/__about__.py",
+  "easy_cloud_publish/logging.py"
 ]
 relative_files = true
 
@@ -147,7 +145,7 @@ addopts =[
   "--cov-fail-under=90", 
   "--cov-report=term-missing:skip-covered",
   "--cov-config=pyproject.toml",
-  "--cov=publish"
+  "--cov=easy_cloud_publish"
 ]
 markers = [
   "integration: mark integration tests.",
@@ -156,7 +154,7 @@ markers = [
 
 [tool.mypy]
 files = [
-  "publish",
+  "easy_cloud_publish",
   "tests"
 ]
 

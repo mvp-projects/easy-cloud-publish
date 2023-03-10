@@ -4,7 +4,7 @@ from typing import Type
 
 import pytest
 
-from publish.example import some_function
+from easy_cloud_publish.example import some_function
 
 
 @pytest.mark.unit()
