@@ -2,11 +2,15 @@
 
 [Full report](https://htmlpreview.github.io/?https://github.com/mvp-projects/easy-cloud-publish/blob/python-coverage-comment-action-data/htmlcov/index.html)
 
-| Name                    |    Stmts |     Miss |   Branch |   BrPart |      Cover |   Missing |
-|------------------------ | -------: | -------: | -------: | -------: | ---------: | --------: |
-| publish/\_\_init\_\_.py |        0 |        0 |        0 |        0 |     100.0% |           |
-| publish/example.py      |        8 |        0 |        4 |        0 |     100.0% |           |
-|               **TOTAL** |    **8** |    **0** |    **4** |    **0** | **100.0%** |           |
+| Name                                                  |    Stmts |     Miss |   Branch |   BrPart |      Cover |   Missing |
+|------------------------------------------------------ | -------: | -------: | -------: | -------: | ---------: | --------: |
+| easy\_cloud\_publish/\_\_init\_\_.py                  |        0 |        0 |        0 |        0 |     100.0% |           |
+| easy\_cloud\_publish/core/\_\_init\_\_.py             |        0 |        0 |        0 |        0 |     100.0% |           |
+| easy\_cloud\_publish/core/use\_cases/\_\_init\_\_.py  |        0 |        0 |        0 |        0 |     100.0% |           |
+| easy\_cloud\_publish/core/use\_cases/build\_image.py  |        0 |        0 |        0 |        0 |     100.0% |           |
+| easy\_cloud\_publish/core/use\_cases/deploy\_image.py |        0 |        0 |        0 |        0 |     100.0% |           |
+| easy\_cloud\_publish/example.py                       |        8 |        0 |        4 |        0 |     100.0% |           |
+|                                             **TOTAL** |    **8** |    **0** |    **4** |    **0** | **100.0%** |           |
 
 
 ## Setup coverage badge
