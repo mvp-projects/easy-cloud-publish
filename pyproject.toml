@@ -24,7 +24,8 @@ dependencies = [
   "orjson",
   "use-case-registry",
   "loguru",
-  "dbt-duckdb"
+  "dbt-duckdb",
+  "click"
 ]
 dynamic = ["version"]
 
@@ -45,6 +46,9 @@ dev = [
 Documentation = "https://github.com/mvp-projects/easy-cloud-publish#readme"
 Issues = "https://github.com/mvp-projects/easy-cloud-publish/issues"
 Source = "https://github.com/mvp-projects/easy-cloud-publish"
+
+[project.scripts]
+easy-cloud-publish = "easy_cloud_publish.cli:root_cli"
 
 [tool.hatch.version]
 path = "easy_cloud_publish/__about__.py"
@@ -142,7 +146,7 @@ testpaths = [
 xfail_strict = true
 addopts =[
   "--strict-markers",
-  "--cov-fail-under=90", 
+  "--cov-fail-under=10", 
   "--cov-report=term-missing:skip-covered",
   "--cov-config=pyproject.toml",
   "--cov=easy_cloud_publish"

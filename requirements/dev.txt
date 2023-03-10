@@ -33,6 +33,7 @@ click==8.1.3
     # via
     #   black
     #   dbt-core
+    #   easy_cloud_publish (pyproject.toml)
     #   hatch
     #   mkdocs
     #   pip-tools
@@ -213,8 +214,6 @@ python-dateutil==2.8.2
     # via
     #   ghp-import
     #   hologram
-python-dotenv==1.0.0
-    # via easy_cloud_publish (pyproject.toml)
 python-slugify==8.0.1
     # via agate
 pytimeparse==1.1.8
