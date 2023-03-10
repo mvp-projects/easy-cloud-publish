@@ -41,7 +41,7 @@ jobs:
       - name: Run code
         run: make test
         env:
-          COVERAGE_FILE: ".coverage.${{ steps.versions.outputs.python }}"
+          COVERAGE_FILE: ".coverage.${{ steps.versions.outputs.python }}-${{ matrix.os }}"
 
       - name: Store coverage file
         uses: actions/upload-artifact@v3
