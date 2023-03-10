@@ -5,3 +5,13 @@
 [![Coverage badge](https://github.com/mvp-projects/easy-cloud-publish/raw/python-coverage-comment-action-data/badge.svg)](https://github.com/mvp-projects/easy-cloud-publish/tree/python-coverage-comment-action-data)
 
 ------
+
+## What is this Github Action
+
+`easy-cloud-publish` is a Github Action that makes it easy to deploy containerized applications to the Cloud.
+
+### Supported Cloud Services
+
+- [ ] Amazon Elastic Container Registry
+- [ ] Google Cloud Container Registry
+- [ ] Azure Container Registry
