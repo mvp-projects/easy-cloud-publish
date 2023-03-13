@@ -33,7 +33,6 @@ lint: ## Lint code.
 	mypy $(sources)
 	ruff $(sources)
 	black $(sources)
-	dotenv-linter `find . -type f -name '.env'`
 
 .PHONY: unit
 unit: ## Run code unittest.

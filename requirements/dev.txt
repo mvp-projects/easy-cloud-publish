@@ -250,7 +250,7 @@ rfc3986[idna2008]==1.5.0
     # via httpx
 rich==13.3.2
     # via hatch
-ruff==0.0.254
+ruff==0.0.255
     # via easy-cloud-publish (pyproject.toml)
 shellingham==1.5.0.post1
     # via hatch
