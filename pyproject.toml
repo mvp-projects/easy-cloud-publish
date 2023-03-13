@@ -34,11 +34,11 @@ dev = [
   "pytest",
   "pytest-cov",
   "mypy",
+  "dotenv-linter",
   "ruff",
   "black",
   "pip-tools",
   "hatch",
-  "mypy",
   "mkdocs-material"
 ]
 
